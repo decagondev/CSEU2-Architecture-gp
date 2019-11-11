@@ -79,7 +79,7 @@ while running:
         register[reg_a] += register[reg_b]
 
     # DECODE
-    if command == PRINT_REG:
+    elif command == PRINT_REG:
         # EXECUTE
         instruction_size = 2
         reg = memory[pc + 1]

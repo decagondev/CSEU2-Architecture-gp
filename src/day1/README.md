@@ -55,5 +55,44 @@ The `Bus Interface` Connects to the `System Bus` which consists of a `Data Bus` 
 The `System Bus` connects the `CPU` to the `Main Memory` and the `I/O Sub System`
 
 
+# Numbering Systems
 
+## Decimal
+
+- Digits 0 ~ 9 (10 Digits)
+
+HUNDREDS | TENS | UNITS
+0          0       1
+ 0         1       0
+
+## HEX (Hexadecimal)
+
+- Digits 0 ~ F (16 Digits)
+
+                0
+                1
+                2
+                3
+                ~
+                A
+                B 
+                C 
+                D 
+                E 
+                F
+          1     0 
+          1     1
+          1     F
+          2     1
+
+## Binary
+
+- Digits 0 ~ 1 (2 Digits)
+
+                0
+                1
+            1   0
+            1   1
+        1   0   0
+        1   0   1            
 

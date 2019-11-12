@@ -24,7 +24,7 @@ examples, doing each bit pair at a time in isolation:
 
 some more examples with OR.
 
-Show the C operators:
+Show the Python operators:
 
 Operation | Bitwise Operator | Boolean Operator
 :--------:|:----------------:|:---------------:

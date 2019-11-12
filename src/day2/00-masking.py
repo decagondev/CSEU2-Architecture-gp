@@ -1,3 +1,7 @@
 # lets talk about bitmasking
 
-print(1 or 1)
+a = 8
+b = 2
+
+print(a << b)
+print(a * (2 ** b))

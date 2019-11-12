@@ -128,3 +128,4 @@ while running:
         sys.exit(1)
 
     pc += instruction_size
+

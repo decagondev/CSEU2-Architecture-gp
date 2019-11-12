@@ -15,7 +15,13 @@ try:
 
             # convert the pre-comment portion (to the left) from binary to a value
             # extract the first part of the split to a number variable
-            num = comment_split[0]
+            # and trim whitespace
+            num = comment_split[0].strip()
+
+            # ignore blank lines / comment only lines
+            if len(num) == 0:
+                continue
+
             # set the number to an integer of base 2
             value = int(num, 2)
             # print the value in binary and in decimal

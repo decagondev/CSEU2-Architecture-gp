@@ -123,6 +123,20 @@ while running:
         instruction_size = 2
         reg = memory[pc + 1]
         print(register[reg])
+    # DECODE
+    elif command == PUSH:
+        # EXECUTE
+        # SETUP
+        instruction_size = 2
+        reg = memory[pc + 1]
+        val = register[reg]
+
+        # PUSH
+        register[SP] -= 1
+        memory[register[SP]] = val
+
+
+
 
     # DECODE (ERROR)
     else:

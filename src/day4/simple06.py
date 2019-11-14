@@ -15,7 +15,19 @@ POP = 8
 CALL = 9
 RET = 10
 
-
+## branch table
+# bt = {
+#     HALT: op_halt,
+#     PRINT_TOM: op_print_tom,
+#     PRINT_NUM: op_print_num,
+#     SAVE: op_save,
+#     PRINT_REG: op_print_reg,
+#     ADD: op_add,
+#     PUSH: op_push,
+#     POP: op_pop,
+#     CALL: op_call,
+#     RET: op_ret
+# }
 
 
 # flags
@@ -154,7 +166,8 @@ while running:
         # SETUP
         instruction_size = 2
         reg = memory[pc + 1]
-        val = memory[register[SP]]
+        index = register[SP]
+        val = memory[index]
 
         # POP
         register[reg] = val
@@ -198,3 +211,50 @@ while running:
     if not op_pc:
         pc += instruction_size
 
+# while running:
+#     ir = memory[pc]
+
+#     if ir in bt:
+#         bt[ir]()
+#     else:
+#         raise Exception(f"Invalid instruction {hex(ir)} at address {hex(pc)}")
+
+# def op_halt():
+#     print("Halted!")
+#     sys.exit(-1)
+
+# def op_print_tom():
+#     print("tom")
+#     pc += 1
+
+# def op_print_num():
+#     print("PRINT_NUM")
+#     pc +=2
+
+# def op_save():
+#     print("SAVE")
+#     pc += 2
+
+# def op_print_reg():
+#     print("PRINT_REG")
+#     pc += 2
+
+# def op_add():
+#     print("ADD")
+#     pc += 3
+
+# def op_push():
+#     print("PUSH")
+#     pc += 2
+
+# def op_pop():
+#     print("POP")
+#     pc += 2
+
+# def op_call():
+#     print("CALL")
+#     pc += 3
+
+# def op_ret():
+#     print("RET")
+#     pc -= 3

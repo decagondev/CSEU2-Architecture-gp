@@ -3,12 +3,14 @@
 python addprog.py
 
 ```python
-    def add(a, b):
-        return a + b
+    def add(a, b):     #     add:
+        return a + b   #        ADD R0, R1
+                       #        RET
 
-    x = 10
-    y = 20
-    z = add(x, y)
+
+    x = 10 # SAVE R0
+    y = 20 # SAVE R1
+    z = add(x, y) # CALL @add # SAV R3, 30
 
 ```
 O/S (fork) <--- SP
@@ -44,3 +46,4 @@ padding
     }
 
 ```
+

@@ -49,16 +49,16 @@ POP R2
 POP R2
 POP R2 <---- 11 pops
 
-0: PRINT_TOM
-1: SAVE
+0: PRINT_TOM  
+1: SAVE 
 2: 7
 3: 0
-4: CALL 
+4: CALL
 5: 0
-6: HALT
-7: PRINT_TOM
-8: PRINT_TOM
-9: RET
+6: HALT <-- PC
+7: PRINT_TOM 
+8: PRINT_TOM 
+9: RET 
 
 STACK
 ------

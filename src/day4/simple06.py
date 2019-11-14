@@ -12,6 +12,8 @@ PRINT_REG = 5
 ADD = 6
 PUSH = 7
 POP = 8
+CALL = 9
+RET = 10
 
 
 
@@ -77,6 +79,7 @@ if len(sys.argv) != 2:
 
 load_memory(sys.argv[1])
 
+op_pc = False
 # REPL (FETCH, DECODE, EXECUTE)
 
 while running:
@@ -88,6 +91,7 @@ while running:
         # EXECUTE
         instruction_size = 1
         print("Tom")
+        op_pc = False
  
     # DECODE
     elif command == HALT:
@@ -101,6 +105,7 @@ while running:
         instruction_size = 2
         num = memory[pc + 1]
         print(num)
+        op_pc = False
   
     # DECODE
     elif command == SAVE:
@@ -109,6 +114,7 @@ while running:
         num = memory[pc + 1]
         reg = memory[pc + 2]
         register[reg] = num
+        op_pc = False
   
     # DECODE
     elif command == ADD:
@@ -117,6 +123,7 @@ while running:
         reg_a = memory[pc + 1]
         reg_b = memory[pc + 2]
         register[reg_a] += register[reg_b]
+        op_pc = False
 
     # DECODE
     elif command == PRINT_REG:
@@ -124,6 +131,7 @@ while running:
         instruction_size = 2
         reg = memory[pc + 1]
         print(register[reg])
+        op_pc = False
     
     # DECODE
     elif command == PUSH:
@@ -135,7 +143,10 @@ while running:
 
         # PUSH
         register[SP] -= 1
-        memory[register[SP]] = val
+
+        index = register[SP]
+        memory[index] = val
+        op_pc = False
 
     # DECODE
     elif command == POP:
@@ -148,6 +159,32 @@ while running:
         # POP
         register[reg] = val
         register[SP] += 1
+        op_pc = False
+
+    # DECODE
+    elif command == CALL:
+        # EXECUTE
+        # SETUP
+        instruction_size = 2
+        reg = memory[pc + 1]
+
+        # CALL
+        register[SP] -= 1 # Decrement Stack Pointer
+        memory[register[SP]] = pc + 2 # Push PC + 2 on to the stack
+
+        # set pc to subroutine
+        pc = register[reg]
+        op_pc = True
+
+    # DECODE
+    elif command == RET:
+        pc = memory[register[SP]]
+        register[SP] += 1
+        op_pc = True
+
+
+        
+        
 
 
 
@@ -157,6 +194,7 @@ while running:
         # EXECUTE
         print(f"Unknown Instruction {command}")
         sys.exit(1)
-
-    pc += instruction_size
+    
+    if not op_pc:
+        pc += instruction_size
 
